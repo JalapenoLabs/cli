@@ -34,10 +34,5 @@
     "**/dist",
     "**/.vite",
     "**/out",
-  ],
-  "include": [
-    "electron/src",
-    "frontend/src",
-    "bifrost/src"
   ]
 }
