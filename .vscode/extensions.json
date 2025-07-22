@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "formulahendry.auto-rename-tag",
+    "mikestead.dotenv",
+    "dsznajder.es7-react-js-snippets",
+    "dbaeumer.vscode-eslint",
+    "github.vscode-github-actions",
+    "chang196700.newline",
+    "syler.sass-indented",
+    "vitest.explorer",
+    "gruntfuggly.todo-tree",
+    "skyran.js-jsx-snippets",
+    "ms-vscode.vscode-typescript-next",
+    "jackie-onai.i18next",
+    "guestline.react-i18next-translation-on-hover",
+    "bradlc.vscode-tailwindcss",
+    "nyxb.vscode-styled-colors"
+  ]
+}

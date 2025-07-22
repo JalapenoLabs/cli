@@ -26,14 +26,19 @@ Yarn will attempt to grab the matching semver range resolution, however using np
 Vite: `vite.config.ts`
 ```
 import { defineConfig } from 'vite'
-import { config } from '@jalapenolabs/cli/vite.config.ts'
+import { config } from '@jalapenolabs/cli/vite'
 
 export default defineConfig({
   ...config
 })
 ```
 
-
+Eslint: `.eslintrc.cjs`
+```
+module.exports = {
+  extends: ["@jalapenolabs/cli/eslint"]
+}
+```
 
 # Permission
 

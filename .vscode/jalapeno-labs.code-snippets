@@ -1,0 +1,12 @@
+{
+	"copyright": {
+		"prefix": [
+			"jalapenolabs",
+			"copyright"
+		],
+		"body": [
+			"${LINE_COMMENT} Copyright © ${CURRENT_YEAR} JalapenoLabs\n",
+		],
+		"description": "JalapenoLabs copyright"
+	}
+}

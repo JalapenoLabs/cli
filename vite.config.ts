@@ -6,7 +6,6 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 // Plugins
-import react from '@vitejs/plugin-react-swc'
 // https://www.npmjs.com/package/vite-tsconfig-paths
 import tsconfigPaths from 'vite-tsconfig-paths'
 // https://www.npmjs.com/package/vite-plugin-full-reload
@@ -19,8 +18,6 @@ export default defineConfig({
   plugins: [
     // Absolute imports:
     tsconfigPaths(),
-    // React language + JSX:
-    react(),
     // Full reload when i18next en/translation.json changes:
     fullReload([
       resolve(
@@ -33,13 +30,11 @@ export default defineConfig({
     preprocessorOptions: {
       sass: {
         additionalData: `
-          @use '@/sass/theme.sass' as *
           @use 'sass:color'
         `,
       },
       scss: {
         additionalData: `
-          @use '@/sass/theme.sass' as *;
           @use 'sass:color';
         `,
       },
@@ -47,7 +42,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(process.cwd(), 'src')
     },
   },
 })
