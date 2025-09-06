@@ -22,8 +22,16 @@ import i18Next from 'eslint-plugin-i18next'
 // @ts-ignore
 import licenseHeader from 'eslint-plugin-license-header'
 
+
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const baseDirectory = dirname(
+  fileURLToPath(import.meta.url),
+)
+
 const compat = new FlatCompat({
-  baseDirectory: process.cwd(),
+  baseDirectory,
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all,
 })
