@@ -108,9 +108,9 @@ export default defineConfig([
       'comma-dangle': [ 'error', 'always-multiline' ],
       'comma-spacing': 'error',
       'comma-style': 'error',
-      'computed-property-spacing': 'error', 'eol-last': 'error',
+      'computed-property-spacing': 'error',
       'func-call-spacing': 'error',
-      'indent': [ 'error', 2 ],
+      'indent': 'off',
       'key-spacing': 'error',
       'keyword-spacing': [ 'error', {
         before: true,
