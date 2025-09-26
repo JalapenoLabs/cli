@@ -75,7 +75,7 @@ const baseConfig: ConfigWithExtends = {
     'no-cond-assign': 'off',
     'no-irregular-whitespace': 'error',
     'no-unexpected-multiline': 'error',
-    'curly': [ 'error', 'multi-line' ],
+    'curly': [ 'error', 'all' ],
     // 'guard-for-in': 'error', // <-- Manually turning off
     'no-caller': 'error',
     'no-extend-native': 'error',
