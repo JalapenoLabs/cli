@@ -1,4 +1,3 @@
-
 # Repo Installation
 
 You can point a dependency at any Git repo (public or private). Yarn will clone it at install time.

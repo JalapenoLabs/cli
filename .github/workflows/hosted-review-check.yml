@@ -1,0 +1,53 @@
+# Throwaway check for JalapenoLabs/github-actions#7, never merged. It runs
+# the review pipeline from the `hosted-review-runners` branch on a
+# GitHub-hosted runner. The pull request stays a draft so the regular
+# review skips it; a manual re-run of this workflow forces the review.
+name: Hosted review check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Check out the review pipeline
+        uses: actions/checkout@v6
+        with:
+          repository: JalapenoLabs/github-actions
+          ref: hosted-review-runners
+          path: .reviewer
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          persist-credentials: false
+
+      - name: Review
+        uses: ./.reviewer/.github/actions/review-pr
+        with:
+          claude-code-oauth-token: ${{ secrets.ALEX_AUTOMATED_REVIEWER_CLAUDE_TOKEN }}
+          claude-app-id: ${{ vars.CLAUDE_REVIEWER_APP_ID }}
+          claude-app-private-key: ${{ secrets.CLAUDE_REVIEWER_APP_PRIVATE_KEY }}
+          codex-app-id: ${{ vars.CODEX_REVIEWER_APP_ID }}
+          codex-app-private-key: ${{ secrets.CODEX_REVIEWER_APP_PRIVATE_KEY }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          discord-webhook-url: ${{ secrets.REVIEWER_ALERTS_DISCORD_WEBHOOK }}
+          jira-url: ${{ vars.JIRA_URL }}
+          jira-api-token: ${{ secrets.JIRA_API_TOKEN }}
