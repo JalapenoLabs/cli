@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   review:
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, reviewer]
     timeout-minutes: 45
     steps:
       - name: Check out the pull request
