@@ -29,7 +29,7 @@ jobs:
     # the reviewers' credentials, so a fork's code must never be checked out
     # on it.
     if: github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: [self-hosted, reviewer]
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
       # Full history so reviewers can `git log`, `git blame`, and `git show`
@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: JalapenoLabs/github-actions
-          ref: main
+          ref: hosted-review-runners
           path: .reviewer
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           persist-credentials: false
